@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Practice">
+<head>
+    <meta charset="UTF-8">
+    <title >Blog Practice</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div ng-controller="ViewController" class="container">
+        <h1>Practice!!</h1>
+        <input class="form-control" ng-model="title"/>
+        <textarea class="form-control" ng-model="body"></textarea>
+        <button ng-click="addPost(title,body)" class="btn btn-primary btn-block">Add Post</button>
+
+
+    <div ng-repeat="p in posts">
+        <h1>{{p.title}}</h1>
+        <span ng-click="removePost($index)" class="glyphicon glyphicon-remove pull-right"></span>
+        <h1>{{p.body}}</h1>
+
+    </div>
+
+    </div>
+<script>
+    angular.module("Practice", [])
+        .controller("ViewController", ViewController);
+
+    function ViewController($scope, $http) {
+
+        $scope.posts=[];
+
+        $http.get("/api/post")
+            .then(setAllPosts);
+
+        $scope.addPost= function(title,body)
+        {
+            var addNewPost = {
+                title: title,
+                body: body
+            };
+            $http.post("/api/post", addNewPost)
+                .then(setAllPosts);
+        }
+
+        $scope.removePost=function(index){
+            $http.delete("/api/post/"+index)
+                .then(setAllPosts);
+        }
+
+        function setAllPosts(response) {
+            console.log(response);
+            $scope.posts=response.data;
+        }
+
+
+
+    }
+
+
+</script>
+
+</body>
+</html>

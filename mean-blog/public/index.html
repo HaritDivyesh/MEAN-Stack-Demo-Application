@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MeanBlogApp">
+<head>
+    <meta charset="UTF-8">
+    <title>MEAN Blog</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div ng-controller="BlogController" class="container">
+        <h1>MEAN Blog</h1>
+        <input class="form-control" ng-model="title"/ >
+        <textarea class="form-control" ng-model="body"></textarea>
+        <button ng-click="createPost(title,body)" class="btn btn-primary btn-block">Add Blog</button>
+
+        <div ng-repeat="post in posts">
+            <h2>{{post.title}}
+                <span ng-click="removePost(post._id)" class="glyphicon glyphicon-remove pull-right"></span>
+            </h2>
+            <p>{{post.body}}</p>
+        </div>
+    </div>
+
+    <script>
+        angular
+            .module("MeanBlogApp", [])
+            .controller("BlogController", BlogController);
+
+        function BlogController ($scope, $http) {
+            $scope.hello="Hello from Controller!";
+            $scope.post={
+                title: "First Post",
+                body: "First Body"
+            };
+            $scope.posts=[];
+
+            $http.get("/api/post")
+                    .then(setAllPosts);
+
+            $scope.createPost=function(title,body)
+            {
+                var newPost= {
+                    title:title,
+                    body:body
+            }
+                //$scope.posts.push(newPost);
+                $http.post("/api/post", newPost)
+                    .then(setAllPosts);
+            }
+            $scope.removePost= function(id) {
+ //               $scope.posts.splice(index,1);
+                $http.delete("/api/post/"+id)
+                        .then(setAllPosts);
+            }
+
+            function setAllPosts(response) {
+                console.log(response);
+                $scope.posts =response.data;
+            }
+        }
+    </script>
+
+</body>
+</html>
