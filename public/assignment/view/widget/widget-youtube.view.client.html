@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user scalable=no">
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assignment/css/style.css" rel="stylesheet"/>
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
 
             <p class="navbar-text pull-left">
-                <a href="website-list.html" class="navbar-link">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
             </p>
 
             <a class="navbar-brand" href="#">
-                New website
+                Widget Edit
             </a>
 
             <p class="navbar-text pull-right">
-                <a href="website-list.html" class="navbar-link">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -40,22 +28,39 @@
 
     <form>
         <div class="form-group">
-            <label for="websitename">Website Name</label>
+            <label for="widgetname">Name</label>
             <input type="text"
                    class="form-control"
-                   id="websitename"
-                   placeholder="Google">
+                   id="widgetname"
+                   placeholder="Widget Name">
         </div>
 
         <div class="form-group">
-            <label for="description">Website Description</label>
-            <textarea class="form-control"
-                      id="description"
-                      rows="4"
-                      placeholder="Description"
-                      class="form-control">
-            </textarea>
+            <label for="text">Text</label>
+            <input type="text"
+                   class="form-control"
+                   id="text"
+                   placeholder="Description">
         </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="url"
+                   class="form-control"
+                   id="url"
+                   placeholder="https://www.google.com">
+        </div>
+
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text"
+                   class="form-control"
+                   id="width"
+                   placeholder="100%">
+        </div>
+
+        <a class="btn btn-danger btn-block"
+           href="widget-chooser.view.client.html" role="button">Delete</a>
+
 
 </div>
 
@@ -85,5 +90,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>

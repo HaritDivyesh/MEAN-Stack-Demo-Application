@@ -5,7 +5,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="viewport" content="initial-scale=1.25, user scalable=no">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Image Widget</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="/assignment/css/style.css" rel="stylesheet"/>
 </head>
@@ -14,12 +14,21 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
+
+            <p class="navbar-text pull-left">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+
             <a class="navbar-brand" href="#">
-                Websites
+                Widget Edit
             </a>
+
             <p class="navbar-text pull-right">
-                <a href="#" class="navbar-link">
-          <span class="glyphicon glyphicon-plus">
+                <a href="widget-chooser.view.client.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
             </p>
@@ -29,36 +38,53 @@
 
 <div class="container">
 
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong> Your profile was saved.
-    </div>
-
     <form>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
+            <label for="widgetname">Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="widgetname"
+                   placeholder="Widget Name">
         </div>
 
         <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Email">
+            <label for="text">Text</label>
+            <input type="text"
+                   class="form-control"
+                   id="text"
+                   placeholder="Description">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="url"
+                   class="form-control"
+                   id="url"
+                   placeholder="https://www.google.com">
         </div>
 
         <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" id="firstname" placeholder="First Name">
+            <label for="width">Width</label>
+            <input type="text"
+                   class="form-control"
+                   id="width"
+                   placeholder="100%">
         </div>
 
         <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+            <label for="file">Upload</label>
+            <input type="file"
+                   class="form-control"
+                   id="file"
+                   accept="image/*"
+                   placeholder="No File Chosen">
         </div>
 
-    <a class="btn btn-primary btn-block"
-       href="/assignment/website/website-list.html" role="button">Websites</a>
-    <a class="btn btn-danger btn-block"
-       href="login.html" role="button">Logout</a>
+        <a class="btn btn-primary btn-block"
+           href="widget-chooser.view.client.html" role="button">Upload image</a>
+
+        <a class="btn btn-danger btn-block"
+           href="widget-chooser.view.client.html" role="button">Delete</a>
+
 
 </div>
 

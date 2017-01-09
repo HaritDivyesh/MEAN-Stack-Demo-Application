@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user scalable=no">
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assignment/css/style.css" rel="stylesheet"/>
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
 
             <p class="navbar-text pull-left">
-                <a href="page-list.html" class="navbar-link">
+                <a href="website-list.view.client.html" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
             </p>
 
             <a class="navbar-brand" href="#">
-                New page
+                Edit website
             </a>
 
             <p class="navbar-text pull-right">
-                <a href="page-list.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok">
+                <a href="website-list.view.client.html" class="navbar-link">
+          <span class="glyphicon glyphicon-plus">
           </span>
                 </a>
             </p>
@@ -40,20 +28,27 @@
 
     <form>
         <div class="form-group">
-            <label for="pagename">Name</label>
+            <label for="websitename">Website Name</label>
             <input type="text"
                    class="form-control"
-                   id="pagename"
-                   placeholder="PageName">
+                   id="websitename"
+                   value="Apple"
+                   placeholder="Google">
         </div>
 
         <div class="form-group">
-            <label for="pagetitle">Title</label>
-            <input type="text"
-                   class="form-control"
-                   id="pagetitle"
-                   placeholder="Page Title">
+            <label for="description">Website Description</label>
+            <textarea class="form-control"
+                      id="description"
+                      rows="4"
+                      placeholder="Description"
+                      class="form-control">
+                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends,like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.
+            </textarea>
         </div>
+
+    <a class="btn btn-danger btn-block"
+       href="website-list.view.client.html" role="button">Delete</a>
 
 </div>
 
@@ -83,5 +78,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>
