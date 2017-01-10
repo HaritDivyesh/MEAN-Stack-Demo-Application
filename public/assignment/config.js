@@ -23,11 +23,21 @@
             controller: "ProfileController",
             controllerAs: "model"
         })
+        .when("/user/:userid/website/new", {
+            templateUrl: "view/website/website-new.view.client.html",
+            controller: "NewWebsiteController",
+            controllerAs: "model"
+        })
         .when("/user/:userId/website", {
              templateUrl: "view/website/website-list.view.client.html",
             controller: "WebsiteListController",
             controllerAs: "model"
     })
+
+        .when("/user/:uid/website/:wid", {
+            templateUrl: "view/website/website-edit.view.client.html"
+    })
+
         .otherwise({
             redirectTo: "/login"
         });

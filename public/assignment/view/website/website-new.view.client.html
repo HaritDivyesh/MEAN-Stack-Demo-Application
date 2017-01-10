@@ -2,9 +2,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-
+            {{model.userId}}
             <p class="navbar-text pull-left">
-                <a href="website-list.view.client.html" class="navbar-link">
+                <a href="#/user/{{model.userId}}/website" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
           </span>
                 </a>
@@ -15,9 +15,8 @@
             </a>
 
             <p class="navbar-text pull-right">
-                <a href="website-list.view.client.html" class="navbar-link">
-          <span class="glyphicon glyphicon-ok">
-          </span>
+                <a ng-click = "model.createWebsite(name,description)" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
                 </a>
             </p>
         </div>
@@ -25,11 +24,11 @@
 </nav>
 
 <div class="container">
-
     <form>
         <div class="form-group">
             <label for="websitename">Website Name</label>
-            <input type="text"
+            <input ng-model="name"
+                    type="text"
                    class="form-control"
                    id="websitename"
                    placeholder="Google">
@@ -37,14 +36,15 @@
 
         <div class="form-group">
             <label for="description">Website Description</label>
-            <textarea class="form-control"
+            <textarea ng-model="description"
+                      class="form-control"
                       id="description"
                       rows="4"
                       placeholder="Description"
                       class="form-control">
             </textarea>
         </div>
-
+    </form>
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
