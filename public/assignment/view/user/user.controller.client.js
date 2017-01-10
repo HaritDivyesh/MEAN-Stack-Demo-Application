@@ -27,6 +27,7 @@
                 if (users[i].username === username && users[i].password === password) {
 
                     $location.url("/profile/"+users[i]._id);
+                    break;
 
                 }
                 else {
