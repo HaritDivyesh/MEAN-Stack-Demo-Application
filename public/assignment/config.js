@@ -18,11 +18,16 @@
         .when("/register", {
             templateUrl: "view/user/register.view.client.html"
         })
-        .when("/profile/:id", {
+        .when("/user/:id", {
             templateUrl: "view/user/profile.view.client.html",
             controller: "ProfileController",
             controllerAs: "model"
         })
+        .when("/user/:userId/website", {
+             templateUrl: "view/website/website-list.view.client.html",
+            controller: "WebsiteListController",
+            controllerAs: "model"
+    })
         .otherwise({
             redirectTo: "/login"
         });
