@@ -15,8 +15,8 @@
             </a>
 
             <p class="navbar-text pull-right">
-                <a href="website-list.view.client.html" class="navbar-link">
-          <span class="glyphicon glyphicon-plus">
+                <a ng-click = "model.createWebsite(name,description)" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok"></span>
           </span>
                 </a>
             </p>
@@ -28,10 +28,10 @@
 
     <form>
         <div class="form-group">
-            <label for="websitename">Website Name</label>
+            <label for="name">Website Name</label>
             <input type="text"
                    class="form-control"
-                   id="websitename"
+                   id="name"
                    value="Apple"
                    placeholder="Google">
         </div>

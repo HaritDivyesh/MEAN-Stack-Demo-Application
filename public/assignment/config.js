@@ -39,24 +39,33 @@
                 controller:"EditWebsiteController",
                 controllerAs:"model"
             })
-            .when("/website-edit",{
-                templateUrl:"view/website/website-edit.view.client.html"
-            })
-            .when("/widget-chooser",{
-                templateUrl:"view/widget/widget-chooser.view.client.html"
-            })
-            .when("/widget-heading",{
-                templateUrl:"view/widget/widget-heading.view.client.html"
-            })
-            .when("/widget-image",{
-                templateUrl:"view/widget/widget-image.view.client.html"
-            })
-            .when("/widget-list",{
-                templateUrl:"view/widget/widget-list.view.client.html"
-            })
-            .when("/widget-youtube",{
-                templateUrl:"view/widget/widget-youtube.view.client.html"
-            })
+
+            .when("/user/:uid/website/:wid/page/:pid/widget", {
+                templateUrl: "view/widget/widget-list.view.client.html",
+                controller: "WidgetListController",
+                controllerAs: "model"
+        })
+
+
+            //
+            // .when("/website-edit",{
+            //     templateUrl:"view/website/website-edit.view.client.html"
+            // })
+            // .when("/widget-chooser",{
+            //     templateUrl:"view/widget/widget-chooser.view.client.html"
+            // })
+            // .when("/widget-heading",{
+            //     templateUrl:"view/widget/widget-heading.view.client.html"
+            // })
+            // .when("/widget-image",{
+            //     templateUrl:"view/widget/widget-image.view.client.html"
+            // })
+            // .when("/widget-list",{
+            //     templateUrl:"view/widget/widget-list.view.client.html"
+            // })
+            // .when("/widget-youtube",{
+            //     templateUrl:"view/widget/widget-youtube.view.client.html"
+            // })
             .otherwise({
                 redirectTo:"/login"
             });
