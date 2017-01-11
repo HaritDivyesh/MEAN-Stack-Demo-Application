@@ -1,12 +1,13 @@
 (function(){
     angular
         .module("WebAppMaker")
-         .controller("NewWebsiteController", NewWebsiteController)
+         .controller("NewWebsiteController", NewWebsiteController);
 
     function NewWebsiteController($location, $routeParams, WebsiteService) {
 
         var vm=this;
         vm.userId=$routeParams.userId;
+        vm.createWebsite= createWebsite;
 
         function createWebsite(name, description) {
             var newWebsite = WebsiteService.createWebsite(vm.userId,name, description);

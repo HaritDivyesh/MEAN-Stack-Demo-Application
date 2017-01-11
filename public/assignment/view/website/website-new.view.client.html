@@ -2,7 +2,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            {{model.userId}}
             <p class="navbar-text pull-left">
                 <a href="#/user/{{model.userId}}/website" class="navbar-link">
           <span class="glyphicon glyphicon-chevron-left">
@@ -26,11 +25,11 @@
 <div class="container">
     <form>
         <div class="form-group">
-            <label for="websitename">Website Name</label>
+            <label for="name">Website Name</label>
             <input ng-model="name"
                     type="text"
                    class="form-control"
-                   id="websitename"
+                   id="name"
                    placeholder="Google">
         </div>
 
