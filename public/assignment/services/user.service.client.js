@@ -7,40 +7,41 @@
         .module("WebAppMaker")
         .factory("UserService",UserService);
 
-    var users =   [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
-
-
-    function UserService(){
+    function UserService($http) {
         var api = {
-            findUserByUsernameAndPassword : findUserByUsernameAndPassword,
+            findUserByUsernameAndPassword: findUserByUsernameAndPassword,
             findUserById: findUserById,
-            createUser : createUser,
-            updateUser : updateUser,
-            deleteUser : deleteUser
+            createUser: createUser,
+            updateUser: updateUser,
+            deleteUser: deleteUser
         };
         return api;
 
-        function createUser(newUser){
-            users.push(newUser);
+        function createUser(username, password) {
+            var user= {
+
+                username:username,
+                password:password
+
+            };
+
+            return $http.post("/api/user", user);
         }
-        function deleteUser(userId){
-            for(var i in users){
-                if(users[i]._id===id){
+
+        function deleteUser(userId) {
+            for (var i in users) {
+                if (users[i]._id === id) {
                     users.splice(i);
                     return true;
                 }
             }
             return false;
         }
-        function updateUser(id, newUser){
+
+        function updateUser(id, newUser) {
             console.log(newUser);
-            for(var i in users){
-                if(users[i]._id===id){
+            for (var i in users) {
+                if (users[i]._id === id) {
                     console.log(users[i].firstName);
                     users[i].firstName = newUser.firstName;
                     users[i].lastName = newUser.lastName;
@@ -50,23 +51,16 @@
             return false;
         }
 
-        function findUserByUsernameAndPassword(username,password){
-            for (var i in users){
-                if(users[i].username === username && users[i].password === password){
-                    return users[i];
-                }
-            }
-            return null;
+        function findUserByUsernameAndPassword(username, password) {
+            var url = "/api/user?username=" + username + "&password=" + password;
+            return $http.get(url);
         }
 
-        function findUserById(id){
+        function findUserById(id) {
 
-            for(var i in users){
-                if(users[i]._id===id){
-                    return users[i];
-                }
-            }
-            return null;
+            var url="/api/user/"+ id;
+            return $http.get(url);
+
         }
     }
 })();

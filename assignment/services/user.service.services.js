@@ -8,9 +8,21 @@ module.exports = function(app) {
     ];
 
     app.get("/api/user", getUsers);
+    app.get("/api/user/:userId", findUserById);
     app.get("/api/user/:username/",findUserByUsername);
     app.get("/api/user/:username/:password",findUserByCredentials);
-    app.get("/api/user/:userId", findUserById);
+
+    app.post("/api/user", createUser);
+
+    function createUser(req, res) {
+
+        var user=req.body;
+        user._id=(new Date()).getTime()+"";
+        users.push(user);
+        console.log(users);
+        res.send(200);
+    }
+
 
     function getUsers(req, res) {
         var username = req.query['username'];
