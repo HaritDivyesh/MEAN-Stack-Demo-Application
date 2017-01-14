@@ -40,7 +40,7 @@ module.exports = function(app) {
                 console.log(users[i].firstName);
                 users[i].firstName = newUser.firstName;
                 users[i].lastName = newUser.lastName;
-                res.send(200);
+                res.sendStatus(200);
                 return;
             }
         }
@@ -69,9 +69,7 @@ module.exports = function(app) {
         else if (username) {
             findUserByUsername(username, res);
         }
-        else {
-            res.send(users);
-        }
+
 
     }
 

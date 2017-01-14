@@ -26,13 +26,7 @@
                  vm.error = "User not found";
              }
 
-
             });
-
-
         }
-
     }
-
-
 })();

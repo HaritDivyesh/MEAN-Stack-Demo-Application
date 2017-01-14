@@ -39,7 +39,7 @@
         }
 
         function findWebsitesForUserId(userId){
-            var resultSet = []
+            var resultSet = [];
 
             for(var i in websites){
                 if(websites[i].developerId == userId) {
