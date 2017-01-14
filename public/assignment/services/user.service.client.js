@@ -29,26 +29,15 @@
         }
 
         function deleteUser(userId) {
-            for (var i in users) {
-                if (users[i]._id === id) {
-                    users.splice(i);
-                    return true;
-                }
-            }
-            return false;
+
+            var url="/api/user/"+userId;
+            return $http.delete(url);
         }
 
         function updateUser(id, newUser) {
-            console.log(newUser);
-            for (var i in users) {
-                if (users[i]._id === id) {
-                    console.log(users[i].firstName);
-                    users[i].firstName = newUser.firstName;
-                    users[i].lastName = newUser.lastName;
-                    return true;
-                }
-            }
-            return false;
+
+            var url="/api/user/"+id;
+            return $http.put(url, newUser);
         }
 
         function findUserByUsernameAndPassword(username, password) {

@@ -17,9 +17,14 @@
 
 <div class="container">
 
-    <div class="alert alert-success alert-dismissible" role="alert">
+    <div ng-if="model.success " class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong> Your profile was saved.
+        <strong>Success!</strong> {{model.success}}.
+    </div>
+
+    <div ng-if="model.error" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Yikes!</strong> {{model.error}}.
     </div>
 
     <form>
@@ -42,11 +47,13 @@
             <label for="lastname">Last Name</label>
             <input type="text"  ng-model="model.user.lastName" class="form-control" id="lastname" placeholder="Last Name">
         </div>
-
+    </form>
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.user._id}}/website" role="button">Websites</a>
     <a class="btn btn-danger btn-block"
        href="#/login" role="button">Logout</a>
+        <a ng-click="model.unRegister()" class="btn btn-danger btn-block" role="button">Unregister</a>
+
 
 </div>
 
