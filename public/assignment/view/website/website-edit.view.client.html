@@ -29,21 +29,21 @@
     <form>
         <div class="form-group">
             <label for="name">Website Name</label>
-            <input type="text"
+            <input ng-model="model.website.name"
+                    type="text"
                    class="form-control"
                    id="name"
-                   value="Apple"
                    placeholder="Google">
         </div>
 
         <div class="form-group">
             <label for="description">Website Description</label>
-            <textarea class="form-control"
+            <textarea ng-model="model.website.description"
+                      class="form-control"
                       id="description"
                       rows="4"
                       placeholder="Description"
                       class="form-control">
-                Now that we know who you are, I know who I am. I'm not a mistake! It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? He's the exact opposite of the hero. And most times they're friends,like you and me! I should've known way back when... You know why, David? Because of the kids. They called me Mr Glass.
             </textarea>
         </div>
 

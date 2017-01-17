@@ -17,7 +17,7 @@
         { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
     ];
 
-    function WebsiteService(){
+    function WebsiteService($http){
 
         var api = {
             findWebsitesForUserId : findWebsitesForUserId,
@@ -39,35 +39,43 @@
         }
 
         function findWebsitesForUserId(userId){
-            var resultSet = [];
 
-            for(var i in websites){
-                if(websites[i].developerId == userId) {
-                    resultSet.push(websites[i]);
-                }
-            }
-            return resultSet;
+            return $http.get("/api/user/"+userId+"/website");
+
+            // var resultSet = [];
+            //
+            // for(var i in websites){
+            //     if(websites[i].developerId == userId) {
+            //         resultSet.push(websites[i]);
+            //     }
+            // }
+            // return resultSet;
         }
 
-        function findWebsiteById(id){
+        function findWebsiteById(websiteId){
 
-            for(var i in websites){
-                if(websites[i]._id===id){
-                    return websites[i];
-                }
-            }
-            return null;
+            return $http.get("/api/website/"+websiteId);
         }
 
-        function createWebsite(developerID,name,description){
-            var newWebsite ={
-                _id:(new Date()).getTime()+"",
-                name:name,
-                description:description,
-                developerId:developerID
+        function createWebsite(userId,name,description){
+
+            var website= {
+
+                name: name,
+                description: description
+
             };
-            websites.push(newWebsite);
-            return newWebsite;
+
+            return $http.post("/api/user/"+userId+"/website", website);
+
+            // var newWebsite ={
+            //     _id:(new Date()).getTime()+"",
+            //     name:name,
+            //     description:description,
+            //     developerId:developerID
+            // };
+            // websites.push(newWebsite);
+            // return newWebsite;
 
         }
 

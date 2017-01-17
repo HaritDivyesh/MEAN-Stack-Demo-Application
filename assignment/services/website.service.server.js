@@ -1,6 +1,8 @@
 
 
-module.exports=function(app) {
+module.exports=function(app,models) {
+
+    var websiteModel=models.websiteModel;
 
     var websites =
         [
@@ -21,6 +23,19 @@ module.exports=function(app) {
 
     function createWebsite(req,res) {
 
+        var userId=req.params.userId;
+        var website=req.body;
+        websiteModel
+            .createWebsite(userId, website)
+            .then(
+                function(website) {
+                res.json(website);
+                },
+                    function() {
+                        res.sendStatus(404);
+                    }
+            );
+
     }
 
     function updateWebsite(req,res) {
@@ -37,21 +52,41 @@ module.exports=function(app) {
 
         var userId=req.params.userId;
 
-        var result=[];
+        websiteModel
+            .findAllWebsitesForUser(userId)
+            .then(
+                function (websites) {
+                    res.json(websites);
+                },
+                function () {
+                    res.sendStatus(400);
+                }
+            );
 
-        for (var w in websites) {
 
-            if (websites[w].developerId===userId) {
-
-                result.push(websites[w]);
-
-            }
-        }
-        res.json(result);
+        //
+        // var result=[];
+        //
+        // for (var w in websites) {
+        //
+        //     if (websites[w].developerId===userId) {
+        //
+        //         result.push(websites[w]);
+        //
+        //     }
+        // }
+        // res.json(result);
     }
 
 
     function findWebsiteById(req,res) {
+
+        var websiteId=req.params.websiteId;
+        websiteModel
+            .findWebsiteById(websiteId)
+            .then(function (website) {
+                res.json(website);
+            });
 
     }
 
