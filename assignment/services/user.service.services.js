@@ -1,4 +1,6 @@
-module.exports = function(app) {
+module.exports = function(app, models) {
+
+    var userModel=models.userModel;
 
     var users= [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -7,6 +9,7 @@ module.exports = function(app) {
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
     ];
 
+    app.post("/api/user/:userId", createUser);
     app.get("/api/user", getUsers);
     app.get("/api/user/:userId", findUserById);
     app.get("/api/user/:username/",findUserByUsername);
@@ -52,10 +55,23 @@ module.exports = function(app) {
     function createUser(req, res) {
 
         var user=req.body;
-        user._id=(new Date()).getTime()+"";
-        users.push(user);
-        console.log(users);
-        res.send(200);
+
+        userModel
+            .createUser(user)
+            .then(
+                function (user) {
+
+                console.log(user);
+                res.json(user);
+
+        }, function (error) {
+
+                res.statusCode(400).send(error);
+
+                }
+        );
+
+
     }
 
 
@@ -101,14 +117,26 @@ module.exports = function(app) {
 
     function findUserById(req, res) {
         var id=req.params.userId;
-        for (var i in users) {
-            if(users[i]._id===id) {
-                res.send(users[i]);
-                return;
-            }
-        }
 
-        res.send("Nope!");
+        userModel
+            .findUserById(id)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (error) {
+                    res.send(404).send(error);
+                }
+            );
+
+    //     for (var i in users) {
+    //         if(users[i]._id===id) {
+    //             res.send(users[i]);
+    //             return;
+    //         }
+    //     }
+    //
+    //     res.send("Nope!");
     }
 
 };

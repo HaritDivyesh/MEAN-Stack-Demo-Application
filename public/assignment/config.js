@@ -11,6 +11,11 @@
             .when("/",{
                 templateUrl:"view/home.html"
             })
+            .when("/flickr", {
+                templateUrl: "view/widget/widget-flickr-search.view.client.html",
+                controller: "FlickrImageSearchController",
+                controllerAs: "model"
+            })
             .when("/login",{
                 templateUrl:"view/user/login.view.client.html",
                 controller:"LoginController",
@@ -21,6 +26,7 @@
                 controller: "RegisterController",
                 controllerAs: "model"
             })
+
             .when("/user/:id",{
                 templateUrl:"view/user/profile.view.client.html",
                 controller:"ProfileController",

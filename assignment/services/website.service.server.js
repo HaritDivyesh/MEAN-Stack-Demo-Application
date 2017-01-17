@@ -36,7 +36,6 @@ module.exports=function(app) {
     function findAllWebsitesForUser(req,res) {
 
         var userId=req.params.userId;
-        console.log(userId);
 
         var result=[];
 
