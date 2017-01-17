@@ -25,6 +25,7 @@
 
         function unRegister() {
 
+
             UserService
                 .deleteUser(id)
                 .then(
