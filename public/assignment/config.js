@@ -54,14 +54,24 @@
                 controllerAs: "model"
         })
 
+            .when("/user/:uid/website/:wid/page/:pid/widget/:widgetId", {
+                templateUrl: "view/widget/widget-edit.view.client.html",
+                controller: "WidgetEditController",
+                controllerAs: "model"
+
+            })
+
+            .when("/user/:uid/website/:wid/page/:pid/widget/new",{
+             templateUrl:"view/widget/widget-chooser.view.client.html",
+             controller: "ChooseWidgetController",
+             controllerAs: "model"
+            })
 
             //
             // .when("/website-edit",{
             //     templateUrl:"view/website/website-edit.view.client.html"
             // })
-            // .when("/widget-chooser",{
-            //     templateUrl:"view/widget/widget-chooser.view.client.html"
-            // })
+
             // .when("/widget-heading",{
             //     templateUrl:"view/widget/widget-heading.view.client.html"
             // })

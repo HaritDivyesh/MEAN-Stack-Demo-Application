@@ -16,16 +16,24 @@
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
 
-    function WidgetService() {
+    function WidgetService($http) {
 
         var api= {
 
-            findWidgetsForPageId: findWidgetsForPageId
+            findWidgetsForPageId: findWidgetsForPageId,
+            findWidgetById: findWidgetById
 
         };
 
         return api;
 
+        function findWidgetById(widgetId) {
+
+            var url= "/api/widget/"+widgetId;
+            return $http.get(url);
+
+        }
+        
         function findWidgetsForPageId(pageId) {
 
             return widgets;

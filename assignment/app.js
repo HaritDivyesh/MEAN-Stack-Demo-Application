@@ -4,7 +4,7 @@ module.exports = function(app) {
 
     require("./services/website.service.server.js")(app, models);
     require("./services/user.service.services.js")(app, models);
-   //TODO: require("./services/widget.service.server.js")(app, models);
+   require("./services/widget.service.server.js")(app);
 
 
     var users= [
