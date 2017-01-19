@@ -11,6 +11,9 @@
             .when("/",{
                 templateUrl:"view/home.html"
             })
+            .when("/html",{
+                templateUrl:"view/widget/widget-html-edit.view.client.html"
+            })
             .when("/flickr", {
                 templateUrl: "view/widget/widget-flickr-search.view.client.html",
                 controller: "FlickrImageSearchController",

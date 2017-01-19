@@ -9,7 +9,7 @@
                 </a>
             </p>
             <a class="navbar-brand" href="#">
-                Widget Edit
+                HTML Widget
             </a>
             <p class="navbar-text pull-right">
                 <a href="../assignment/widget/widget-chooser.html" class="navbar-link">
@@ -24,16 +24,21 @@
 
 <div class="container">
 
-    URL
-    <input ng-model="model.widget.url" class="form-control" />
+    <div ng-model="model.widget.html"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
 
-    <form action="/api/uploads"  method="post" enctype="multipart/form-data">
-        <input  name="myFile"   type="file" class="form-control"/>
-        <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
-        <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
-        <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+<!-- Below is how it'll be sent to the db -->
 
-    </form>
+    {{model.widget.html}}
+
+    <div ng-bind-html="model.widget.html"></div>
+
+    <!-- Above is how it'll be rendered when retreiving from db -->
+
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
