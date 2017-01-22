@@ -9,9 +9,10 @@
         var vm=this;
         vm.updateUser = updateUser;
         vm.unRegister= unRegister;
-
+        vm.logout=logout;
+        
         var id=$routeParams.id;
-
+        
         function init() {
             UserService
                 .findUserById(id)
@@ -22,6 +23,22 @@
         }
 
         init();
+
+        function logout() {
+
+            UserService
+                .logout()
+                .then(function (response) {
+
+                    $location.url("/login");
+
+                },
+                    function (response) {
+
+                        $location.url("/login");
+                });
+
+        }
 
         function unRegister() {
 
